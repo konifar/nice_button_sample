@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 
+import com.konifar.nice_button_sample.api.RequestInterceptor;
+
 import java.io.File;
 
 import javax.inject.Singleton;
@@ -50,6 +52,11 @@ public class AppModule {
                 .addInterceptor(interceptor);
 
         return c.build();
+    }
+
+    @Provides
+    public Interceptor provideRequestInterceptor(ConnectivityManager connectivityManager) {
+        return new RequestInterceptor(connectivityManager);
     }
 
     @Provides
