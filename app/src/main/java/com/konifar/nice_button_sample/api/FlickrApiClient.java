@@ -38,6 +38,10 @@ public class FlickrApiClient {
         return new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
     }
 
+    public Observable<PhotoSource> getCatPhotos(int page) {
+        return getCatPhotos(page, 20, null);
+    }
+
     public Observable<PhotoSource> getCatPhotos(int page, int per, @Nullable SortOption sortOption) {
         if (sortOption == null) {
             sortOption = SortOption.SORT_INTERESTINGNESS_DESC;

@@ -5,15 +5,9 @@ import android.os.Bundle;
 
 import com.konifar.nice_button_sample.R;
 import com.konifar.nice_button_sample.databinding.ActivityMainBinding;
-
-import javax.inject.Inject;
-
-import rx.subscriptions.CompositeSubscription;
+import com.konifar.nice_button_sample.fragment.CatsFragment;
 
 public class MainActivity extends BaseActivity {
-
-    @Inject
-    CompositeSubscription subscription;
 
     private ActivityMainBinding binding;
 
@@ -22,20 +16,13 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
         getComponent().inject(this);
-
         initView();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        subscription.unsubscribe();
     }
 
     private void initView() {
         setSupportActionBar(binding.toolbar);
+        replaceFragment(CatsFragment.newInstance(), R.id.content_view);
     }
 
 }
