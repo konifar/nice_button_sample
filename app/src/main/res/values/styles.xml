@@ -31,11 +31,12 @@
     </style>
 
     <!-- Component -->
-    <style name="BaseRecyclerView">
+    <style name="BaseListView">
         <item name="android:clipToPadding">false</item>
         <item name="android:fadingEdge">none</item>
-        <item name="android:padding">@dimen/spacing_small</item>
         <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:scrollingCache">false</item>
     </style>
 

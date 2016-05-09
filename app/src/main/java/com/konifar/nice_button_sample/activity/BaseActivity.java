@@ -1,7 +1,11 @@
 package com.konifar.nice_button_sample.activity;
 
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import com.konifar.nice_button_sample.MainApplication;
 import com.konifar.nice_button_sample.di.ActivityComponent;
@@ -19,4 +23,21 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         return activityComponent;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    final void replaceFragment(Fragment fragment, @IdRes int layoutResId) {
+        final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(layoutResId, fragment, fragment.getClass().getSimpleName());
+        ft.commit();
+    }
+
 }

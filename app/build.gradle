@@ -36,7 +36,7 @@ android {
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "CONFERENCE_TIMEZONE", "\"Asia/Tokyo\""
+        buildConfigField("String", "FLICKR_API_KEY", "\"${flickr_api_key}\"")
 
         // Referred to https://github.com/circleci/EspressoSample to make the Espresso tests
         // work on CircleCI.
